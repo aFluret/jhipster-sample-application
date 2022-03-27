@@ -1,0 +1,85 @@
+
+entity Sales {
+    id Integer
+    balcony String
+    countOfFloors Integer
+    currency String
+    description String
+    floor Integer
+    isBanned Boolean
+    liningArea Double
+    ownership String
+    photos String
+    price Double
+    roomsCount Integer
+    street String
+    totalArea Double
+    typeHouse String
+}
+
+entity Rents {
+	id Integer
+    balcony String
+    countOfFloors Integer
+    currency String
+    description String
+    floor Integer
+    isBanned Boolean
+    liningArea Double
+    ownership String
+    photos String
+    price Double
+    roomsCount Integer
+    street String
+    totalArea Double
+    typeHouse String
+    
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Messages {
+	id Integer
+    email String
+    text String
+    userId Integer
+}
+
+entity Admins {
+	id Integer
+    login String
+    password String
+    
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Users {
+	id Integer
+    banned Boolean
+    email String
+    password String
+    username String
+    rentsId String
+    salesId String
+    phoneNumber String
+}
+
+/**
+ * The Employee entity.
+ */
+
+relationship OneToOne {
+	Sales{id} to Users{phoneNumber}
+}
+
+relationship OneToOne {
+	Users{id} to Messages{usersId}
+}
+
+relationship OneToOne {
+	Rents{id} to Users{rentsId}
+}
+
